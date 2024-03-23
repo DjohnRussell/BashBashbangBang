@@ -54,6 +54,7 @@ case $num in
 				sudo apt-get install $softwareName
 				;;
 			2)
+				clear
 				echo "Mac"
 				echo "name of the software"
 				read softwareName
