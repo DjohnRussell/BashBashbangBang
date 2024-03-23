@@ -48,7 +48,7 @@ case $num in
 			1)
 				clear
 				echo "Linux"
-				echo Name of the software"
+				echo "Name of the software"
 				read softwareName
 				clear
 				sudo apt-get install $softwareName
@@ -56,7 +56,7 @@ case $num in
 			2)
 				clear
 				echo "Mac"
-				echo "name of the software"
+				echo "Name of the software"
 				read softwareName
 				clear
 				brew install $softwareName
