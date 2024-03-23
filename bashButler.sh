@@ -12,13 +12,13 @@ echo "-----------------------------"
 
 sleep 0.5
 
-echo "    1 - Internett site       "
+echo "        1 - Internett        "
 sleep 0.5
-echo "    2 - Download software    "
+echo "        2 - Software         "
 sleep 0.5
-echo "    3 - Write to a file      "
+echo "        3 - File             "
 sleep 0.5
-echo "    4 - Open App             "
+echo "        4 - Open App         "
 
 # users input
 read num
@@ -30,11 +30,28 @@ clear
 
 case $num in 
 	1)
-		echo "Which site:"
+		echo "        Internett Manageer        "
+		echo "                                  "
+		echo "        1 - New Search        "
+		echo "        2 - Google        "
+		echo "        3 - ChatGPT        "
 		read name
-		open https://www.$name.com
-		echo "opening site: $name "
-		;;
+			case $name in 
+				1)
+					clear
+					echo "        Whitch site:        "
+					read name
+					open https://www.$name.com
+					echo "opening site: $name "
+					;;
+				2)
+					open https://www.google.com
+					;;
+				3)
+					open https://chat.openai.com
+					;;	
+			esac
+				;;					
 
 	2)
 		clear
