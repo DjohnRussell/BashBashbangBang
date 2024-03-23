@@ -48,7 +48,7 @@ case $num in
 			1)
 				clear
 				echo "Linux"
-				echo "name of the software"
+				echo Name of the software"
 				read softwareName
 				clear
 				sudo apt-get install $softwareName
