@@ -1,15 +1,16 @@
 1. Make casees under internett.
-	-favorits
-	- new search/ its one current one
+	-favorits-----DONE
+	- new search/ its one current one-----DONE
 	
 2. cases under software
-	-remove software
-	-new oftware its the current one
+	-remove software-----DONE
+	-new oftware its the current one-----DONE
 
 3. Cases under file.
-	-new file, its is the current one
-	-edith/continue file
-	-remove file
+	-new file, its is the current one-----DONE
+	-edith/continue file-----DONE
+	-remove file-----DOMEÙY
+
 
 4. cases under app
 	- fix to linux can aslo open applications.

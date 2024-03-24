@@ -64,50 +64,116 @@ while true; do
             ;;                    
         2)
             clear_and_sleep
-            echo "Select your OS:"
-            echo "1 - Linux"
-            echo "2 - Mac"
-            read -p "Choose an option: " os_choice
-            clear_and_sleep
-            case $os_choice in
-                1)
-                    echo "Enter the name of the software to install with apt:"
-                    read softwareName
-                    if ! sudo apt-get install $softwareName; then
-                        echo "Failed to install $softwareName."
-                    fi
-                    ;;
-                2)
-                    echo "Enter the name of the software to install with brew:"
-                    read softwareName
-                    if ! brew install $softwareName; then
-                        echo "$softwareName installation failed."
-                    else
-                        echo "$softwareName is installed."
-                    fi
-                    ;;
-                *)
-                    echo "Invalid option. Returning to main menu."
-                    ;;
-            esac
-            ;;
+echo "        Select your OS:        "
+echo "        1 - Linux        "
+echo "        2 - Mac        "
+read -p "        Choose an option:         " os_choice
+clear_and_sleep
+
+case $os_choice in
+    1)
+        echo "        1 - Install          "
+        echo "        2 - Remove              "
+        read -p "        Choose an option:   " option 
+
+        case $option in
+            1)
+                echo "Enter the name of the software to install with apt:"
+                read softwareName
+                if ! sudo apt-get install $softwareName; then
+                    echo "Failed to install $softwareName."
+                fi
+                ;;
+            2)
+                echo "Enter the name of the software to remove with apt:"
+                read softwareName
+                if ! sudo apt-get remove $softwareName; then
+                    echo "Failed to remove $softwareName."
+                fi
+                ;;
+            *)
+                echo "Invalid option. Returning to main menu."
+                ;;
+        esac
+        ;;
+    2)
+        echo "        1 - Install          "
+        echo "        2 - Remove              "
+        read -p "        Choose an option:   " option 
+
+        case $option in
+            1)
+                echo "Enter the name of the software to install with brew:"
+                read softwareName
+                if ! brew install $softwareName; then
+                    echo "$softwareName installation failed."
+                else
+                    echo "$softwareName is installed."
+                fi
+                ;;
+            2)
+                echo "Enter the name of the software to uninstall with brew:"
+                read softwareName
+                if ! brew uninstall $softwareName; then
+                    echo "$softwareName uninstallation failed."
+                else
+                    echo "$softwareName is uninstalled."
+                fi
+                ;;
+            *)
+                echo "Invalid option. Returning to main menu."
+                ;;
+        esac
+        ;;
+    *)
+        echo "Invalid option. Returning to main menu."
+        ;;
+esac
+;;
+
         3)
+           
             clear_and_sleep
-            read -p "Enter file name: " name
-            if [ -e "$name.txt" ]; then
-                echo "File $name.txt already exists."
-            else
-                touch "$name.txt"
-                nano "$name.txt"
-            fi
-            ;;
-        4)
-            clear_and_sleep
-            read -p "Which app would you like to open? " appName
-            if ! open -a "$appName"; then
-                echo "Failed to open $appName."
-            fi
-            ;;
+            echo "        File Management        "
+            echo "---------------------------------"
+            echo "        1 - Create New File    "
+            echo "        2 - Edit Existing File "
+            echo "        3 - Remove File        "
+            read -p "Choose an option: " file_option
+
+        case $file_option in
+            1)
+                read -p "Enter file name: " new_file_name
+                if [ -e "$new_file_name.txt" ]; then
+                    echo "File $new_file_name.txt already exists."
+                else
+                    touch "$new_file_name.txt"
+                    nano "$new_file_name.txt"
+                    echo "New file $new_file_name.txt created."
+                fi
+                ;;
+            2)
+                read -p "Enter file name to edit: " edit_file_name
+                if [ -e "$edit_file_name.txt" ]; then
+                    nano "$edit_file_name.txt"
+                else
+                    echo "File $edit_file_name.txt does not exist."
+                fi
+                ;;
+            3)
+                read -p "Enter file name to remove: " remove_file_name
+                if [ -e "$remove_file_name.txt" ]; then
+                    rm "$remove_file_name.txt"
+                    echo "File $remove_file_name.txt removed."
+                else
+                    echo "File $remove_file_name.txt does not exist."
+                fi
+                ;;
+    *)
+        echo "Invalid option. Returning to main menu."
+        ;;
+    esac
+    ;;
         5)
             echo "Exiting Bash Butler. Goodbye!"
             exit 0
